@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/main.css">
+    <title>Invoice - Independence Day Celebration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+		 <img src="../images/logo.png" alt="Logo" class="logo">
+        <h1>Independence Day Celebration</h1>
+        <nav>
+            <a href="../index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="calendar.html">Calendar</a>
+            <a href="products.html">Products</a>
+            <a href="order.html">Order</a>
+            <a href="demo.html">Demo</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Invoice</h2>
+            <p>Thank you for your order! Please find the details of your order below:</p>
+            <p id="display-name"></p>
+            <p id="display-email"></p>
+            <p id="display-phone"></p>
+            <p id="display-address"></p>
+            <p><strong>Ordered Products:</strong></p>
+            <ul id="display-products"></ul>
+            <p id="display-total-cost"></p>
+            <p id="display-discount"></p>
+            <p id="display-final-cost"></p>
+            <p>Please print this page for your records.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Independence Day Celebration. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            if (localStorage.getItem("orderFormData")) {
+                const formData = JSON.parse(localStorage.getItem("orderFormData"));
+
+                document.getElementById("display-name").innerHTML = `<strong>Full Name:</strong> ${formData.name}`;
+                document.getElementById("display-email").innerHTML = `<strong>Email Address:</strong> ${formData.email}`;
+                document.getElementById("display-phone").innerHTML = `<strong>Phone Number:</strong> ${formData.phone}`;
+                document.getElementById("display-address").innerHTML = `<strong>Shipping Address:</strong> ${formData.address}, ${formData.city}, ${formData.state}, ${formData.zip}`;
+
+                const productsList = document.getElementById("display-products");
+                for (const product in formData.products) {
+                    if (formData.products[product].quantity > 0) {
+                        const listItem = document.createElement("li");
+                        listItem.textContent = `${product} - Quantity: ${formData.products[product].quantity}`;
+                        productsList.appendChild(listItem);
+                    }
+                }
+
+                // Display other order details (total cost, discount, final cost) here
+            }
+        });
+
+        function storeFormData() {
+            const form = document.getElementById("order-form");
+            const formData = new FormData(form);
+
+            const products = {
+                "Red, White, and Blue Twinkies": { price: 12, quantity: formData.get("product1") },
+                "Independence Day Stuffed Animal": { price: 15, quantity: formData.get("product2") },
+                "Independence Day Fidget Toys": { price: 8, quantity: formData.get("product3") },
+                "Small USA Flags": { price: 5, quantity: formData.get("product4") },
+                "Independence Day Goofy Glasses": { price: 7, quantity: formData.get("product5") },
+                "Independence Day T-Shirt": { price: 20, quantity: formData.get("product6") },
+                "Fourth of July Fireworks": { price: 40, quantity: formData.get("product7") },
+                "Independence Day Themed Tableware": { price: 25, quantity: formData.get("product8") },
+            };
+
+            const orderData = {
+                name: formData.get("name"),
+                email: formData.get("email"),
+                phone: formData.get("phone"),
+                address: formData.get("address"),
+                city: formData.get("city"),
+                state: formData.get("state"),
+                zip: formData.get("zip"),
+                products: products,
+            };
+
+            localStorage.setItem("orderFormData", JSON.stringify(orderData));
+
+            // Retrieve product data from localStorage
+const productData = JSON.parse(localStorage.getItem("orderFormData")).products;
+
+// Display product data on the page
+const productsList = document.getElementById("display-products");
+for (const product in productData) {
+  const quantity = productData[product].quantity;
+  if (quantity > 0) {
+    const listItem = document.createElement("li");
+    listItem.textContent = `${product} - Quantity: ${quantity}`;
+    productsList.appendChild(listItem);
+  }
+}
+
+        }
+</script>
+
+
+
+
+</body>
+</html>
