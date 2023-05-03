@@ -1,0 +1,106 @@
+ /* Reset some default browser styles */
+body, h1, h2, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+}
+
+.logo {
+    width: 80px; /* Decrease the width as needed */
+    height: auto;
+    margin-right: 1rem;
+}
+
+h1 {
+    font-size: 2rem;
+    color: #0047AB;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+    nav a {
+        text-decoration: none;
+        color: #0047AB;
+        font-weight: bold;
+        padding: 0.5rem;
+    }
+
+main {
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    margin: 1rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: #BF0A30;
+    margin-bottom: 1rem;
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+    .image-grid img {
+        border-radius: 0.5rem;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+footer {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 1rem;
+    text-align: center;
+    margin-top: 1rem;
+}
+
+    footer p {
+        color: #0047AB;
+    }
+
+/* New table-related CSS rules */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+th, td {
+    border: 1px solid #0047AB;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+th {
+    background-color: #BF0A30;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #0047AB;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
